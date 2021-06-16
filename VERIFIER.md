@@ -1,9 +1,14 @@
 At any point, a verifier can run a script to verify each incoming PR and verify the hashes of the targets files.
 
-0. **Verifiers** should fork [this](https://github.com/sigstore/root-signing) git repository by clicking the "fork" button on GitHub. Then, set your `${GITHUB_USER}` with your GitHub username:
+0. **Verifiers** should fork [this](https://github.com/sigstore/root-signing) git repository by clicking the "fork" button on GitHub. Then, clone the repo, and set your `${GITHUB_USER}` with your GitHub username:
 
 ```
+cd $HOME
+mkdir git
+cd git
 export GITHUB_USER=${YOUR_GITHUB_USER}
+git clone git@github.com:{GITHUB_USER}/root-signing.git
+cd root-signing
 ```
 
 1. To verify a PR, run the script with the pull request ID to verify:
