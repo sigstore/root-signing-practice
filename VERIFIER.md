@@ -1,8 +1,9 @@
 At any point, a verifier can run a script to verify each incoming PR and verify the hashes of the targets files.
 
-0. **Verifiers** should fork [this](https://github.com/sigstore/root-signing) git repository by clicking the "fork" button on GitHub.
 
-1. To verify a PR, run the script with the pull request ID to verify, where `YOUR_GITHUB_USERNAME` is your GitHub username:
+0. **Verifiers** should fork [this](https://github.com/sigstore/root-signing) git repository by clicking the "fork" button on GitHub. Clone the repository locally. Instructions are given from the repository's root.
+
+1. To verify a PR, run the script with the pull request ID as an argument, where `YOUR_GITHUB_USERNAME` is your GitHub username:
 
 ```
 GITHUB_USER=${YOUR_GITHUB_USERNAME} ./scripts/verify.sh ${PULL_REQUEST_ID}
@@ -15,7 +16,13 @@ This will download the Yubico root CA. For each key added, it will verify:
 
 If there is any repository data added in the PR, it will also check signatures in each top-level role.
 
-2. Other verifications:
+2. To verify published metadata after the ceremony, run the script with no arguments (this runs at the main branch):
+
+```
+./scripts/verify.sh
+```
+
+3. Other verifications:
 
   * Verify the targets signed and their SHAs. You may choose to retrieve an independent local copy of the targets (Fulcio Root CA certificate, SigStore signing key, Rekor public key, CTFE key) and verify that the SHA-512 matches the sha in `targets.json`.
 
